@@ -2,7 +2,7 @@ BINPATH=/build
 SERVER_BIN=$(BINPATH)/server
 SERVER_SRC=cmd/api/main.go
 GOCMD=go
-GOTEST=$(GOCMD) test -covermode=count -coverprofile=coverage.out ./pkg/...
+GOTEST=$(GOCMD) test -covermode=count -coverprofile=coverage.out `go list ./... |  grep -v 'driver\|mocks\|test\|utils\|api'`
 GOCOVER=$(GOCMD) tool cover -html=coverage.out
 GOBUILD_SERVER=$(GOCMD) build -o $(SERVER_BIN) -v ./$(SERVER_SRC)
 
