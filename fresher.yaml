@@ -1,0 +1,10 @@
+version: 1
+root: .
+main_path: /cmd/api
+tmppath: ./tmp
+buildname: runner-build
+buildlog: runner-build-errors.log
+validext: .go, .tpl, .tmpl, .html
+norebuildext: .tpl, .tmpl, .html
+ignored: assets, tmp, tests
+builddelay: 600

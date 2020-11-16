@@ -4,6 +4,8 @@ import (
 	"cashmachine/pkg/driver"
 	"cashmachine/pkg/usecase"
 	"cashmachine/pkg/utils"
+	"fmt"
+	"os"
 	"strconv"
 
 	"github.com/gofiber/fiber/v2"
@@ -15,10 +17,10 @@ func main() {
 		FullTimestamp: true,
 	})
 
-	log.Info("Server Start, connecting to database...")
+	log.Info(">>>>>>>> Server Start, connecting to database <<<<<<<<")
 	repo, err := utils.BuildRepository()
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	app := fiber.New()
@@ -153,5 +155,5 @@ func main() {
 		return nil
 	})
 
-	app.Listen(":3000")
+	app.Listen(fmt.Sprintf(":%s", os.Getenv("PORT")))
 }

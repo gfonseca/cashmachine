@@ -13,7 +13,7 @@ import (
 func BuildRepository() (*repository.Repository, error) {
 	host := os.Getenv("DB_HOST")
 	user := os.Getenv("DB_USER")
-	pass := os.Getenv("DB_PASS")
+	pass := os.Getenv("DB_PASSWORD")
 	database := os.Getenv("DB_DATABASE")
 	port, err := strconv.Atoi(os.Getenv("DB_PORT"))
 
@@ -24,7 +24,7 @@ func BuildRepository() (*repository.Repository, error) {
 
 	dbDriver, err := driver.NewPGDriver(host, port, user, pass, database)
 	if err != nil {
-		log.WithField("error", err).Fatal("Fail in database connection")
+		log.WithField("error", "Fail in database connection").Fatal(err)
 		return nil, err
 	}
 
