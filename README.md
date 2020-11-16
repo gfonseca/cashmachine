@@ -25,6 +25,7 @@ $ docker-compose up
 
 ### Configurando a database
 
+Após iniciar os serviços com o docker-compose execute o comando:
 ```sh
 make build-db
 ```
